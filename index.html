@@ -9,17 +9,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0B0E13;
-    --bg2:#0E1218;
-    --panel:#141A22;
-    --panel2:#19212B;
-    --line:#28313D;
-    --ink:#E9EEF4;
-    --muted:#8593A2;
-    --faint:#5C6877;
-    --accent:#F4C430;
-    --accent-dim:#7a6418;
-    --bad:#C76A6A;
+    --bg:#0B0E13; --bg2:#0E1218; --panel:#141A22; --panel2:#19212B;
+    --line:#28313D; --ink:#E9EEF4; --muted:#8593A2; --faint:#5C6877;
+    --accent:#F4C430; --accent-dim:#7a6418; --bad:#C76A6A;
     --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
     --sans:'Space Grotesk',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
   }
@@ -30,18 +22,15 @@
       radial-gradient(1200px 600px at 85% -10%, rgba(244,196,48,0.06), transparent 60%),
       radial-gradient(900px 500px at -5% 110%, rgba(244,196,48,0.04), transparent 55%),
       var(--bg);
-    min-height:100vh;
-    padding:28px 22px 60px;
+    min-height:100vh; padding:28px 22px 60px;
   }
-  .wrap{max-width:1180px;margin:0 auto;}
+  .wrap{max-width:1280px;margin:0 auto;}
   header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:22px;}
   .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin:0 0 8px;}
-  h1{font-size:clamp(24px,3.4vw,38px);font-weight:700;line-height:1.04;margin:0;letter-spacing:-0.02em;max-width:18ch;}
+  h1{font-size:clamp(24px,3.4vw,38px);font-weight:700;line-height:1.04;margin:0;letter-spacing:-0.02em;max-width:20ch;}
   h1 em{font-style:normal;color:var(--accent);}
-  .sub{color:var(--muted);font-size:14px;margin:10px 0 0;max-width:54ch;line-height:1.5;}
-  .verdict{
-    font-family:var(--mono);text-align:right;min-width:210px;
-  }
+  .sub{color:var(--muted);font-size:14px;margin:10px 0 0;max-width:64ch;line-height:1.5;}
+  .verdict{font-family:var(--mono);text-align:right;min-width:210px;}
   .verdict .vlabel{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--faint);}
   .chip{display:inline-block;margin-top:6px;padding:9px 14px;border-radius:3px;font-weight:700;font-size:15px;letter-spacing:0.04em;border:1px solid var(--line);}
   .chip.go{background:rgba(244,196,48,0.14);border-color:var(--accent);color:var(--accent);}
@@ -51,7 +40,7 @@
   .verdict .vpay b{color:var(--ink);}
 
   .grid{display:grid;grid-template-columns:340px 1fr;gap:18px;align-items:start;}
-  @media (max-width:880px){.grid{grid-template-columns:1fr;}}
+  @media (max-width:900px){.grid{grid-template-columns:1fr;}}
 
   .panel{background:linear-gradient(180deg,var(--panel),var(--bg2));border:1px solid var(--line);border-radius:8px;padding:16px 16px 18px;}
   .panel h2{font-family:var(--mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--faint);margin:0 0 14px;padding-bottom:9px;border-bottom:1px solid var(--line);}
@@ -67,20 +56,31 @@
   input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;background:var(--accent);cursor:pointer;border:2px solid var(--bg);}
   input[type=number]{width:88px;background:var(--bg);border:1px solid var(--line);color:var(--ink);font-family:var(--mono);font-size:12.5px;padding:6px 7px;border-radius:4px;text-align:right;}
   input[type=number]:focus{outline:none;border-color:var(--accent);}
+  .ctrl.hl{padding:11px;margin:0 -3px 15px;border:1px solid var(--accent-dim);border-radius:6px;background:rgba(244,196,48,0.04);}
+  .ctrl.hl label{color:var(--accent);font-weight:500;}
 
   .viz{display:flex;flex-direction:column;gap:16px;}
   .mapcard{background:linear-gradient(180deg,var(--panel),var(--bg2));border:1px solid var(--line);border-radius:8px;padding:16px;}
-  .maphd{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:12px;}
+  .maphd{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px;margin-bottom:4px;}
   .maphd h2{font-size:15px;font-weight:500;margin:0;}
   .maphd .hint{font-family:var(--mono);font-size:10.5px;color:var(--faint);}
+  .subttl{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin:0 0 12px;}
+  .subttl b{color:var(--accent);font-weight:500;}
+  .subttl .en{color:#E9EEF4;} .subttl .mn{color:#9fb0c2;}
+  .chartwrap{max-width:780px;margin:0 auto;}
   .canvas-host{position:relative;width:100%;}
   canvas{display:block;width:100%;height:auto;border-radius:4px;cursor:crosshair;}
-  .legend{display:flex;flex-wrap:wrap;gap:16px;margin-top:12px;font-family:var(--mono);font-size:10.5px;color:var(--muted);}
+  .tip{position:absolute;pointer-events:none;display:none;z-index:5;background:rgba(11,14,19,0.96);border:1px solid var(--line);border-radius:6px;padding:8px 10px;font-family:var(--mono);font-size:11px;color:var(--ink);line-height:1.55;white-space:nowrap;box-shadow:0 6px 18px rgba(0,0,0,0.45);}
+  .tip .tk{color:var(--faint);}
+  .tip .pct{color:var(--accent);font-weight:700;}
+  .tip .vd{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;vertical-align:middle;}
+  .legend{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:12px;font-family:var(--mono);font-size:10.5px;color:var(--muted);}
   .legend span{display:inline-flex;align-items:center;gap:7px;}
   .sw{width:13px;height:13px;border-radius:2px;display:inline-block;}
   .sw.go{background:rgba(244,196,48,0.55);}
   .sw.no{background:#202833;}
   .sw.line{width:16px;height:0;border-top:2px solid var(--accent);}
+  .sw.dot2{width:16px;height:0;border-top:2px dotted rgba(244,196,48,0.5);}
   .sw.dot{width:11px;height:11px;border-radius:50%;background:transparent;border:2px solid #fff;}
 
   .rdgroup+.rdgroup{margin-top:16px;}
@@ -91,8 +91,8 @@
   .readout{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden;}
   .readout.prov{grid-template-columns:repeat(4,1fr);}
   @media (max-width:560px){.readout,.readout.prov{grid-template-columns:repeat(2,1fr);}}
-  .cell.acc{box-shadow:inset 3px 0 0 var(--accent-dim);}
   .cell{background:var(--panel);padding:13px 14px;}
+  .cell.acc{box-shadow:inset 3px 0 0 var(--accent-dim);}
   .cell .k{font-family:var(--mono);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--faint);margin-bottom:6px;}
   .cell .v{font-family:var(--mono);font-size:18px;font-weight:700;color:var(--ink);line-height:1;}
   .cell .v small{font-size:11px;font-weight:400;color:var(--muted);}
@@ -103,7 +103,7 @@
   .answer h2{font-family:var(--mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--faint);margin:0 0 12px;}
   .answer .line{display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:13px;}
   .answer .line:last-child{border-bottom:none;}
-  .answer .line .q{color:var(--muted);max-width:60%;}
+  .answer .line .q{color:var(--muted);max-width:62%;}
   .answer .line .a{font-family:var(--mono);color:var(--ink);font-weight:700;text-align:right;}
   .answer .line .a.warn{color:var(--bad);font-weight:500;font-size:12px;}
 
@@ -119,12 +119,12 @@
     <div>
       <p class="eyebrow">Built environment // parametric economics</p>
       <h1>When does a digital twin actually <em>pay off?</em></h1>
-      <p class="sub">A twin earns its keep only when the energy it saves outweighs what it costs to build and to run. Set the building, the promised savings, and the twin's CapEx and OpEx, then read where the line falls.</p>
+      <p class="sub">The map is building size against the value the twin creates per square metre each year. Energy and maintenance are summed into one figure in euros, because euros add up where percentages of different bases do not. Anything above the line pays back within target.</p>
     </div>
     <div class="verdict">
       <div class="vlabel">Verdict at this point</div>
       <div id="chip" class="chip go">VIABLE</div>
-      <div class="vpay">payback <b id="vpay">5.7 yr</b> &middot; NPV <b id="vnpv">+€20k</b></div>
+      <div class="vpay">payback <b id="vpay">2.8 yr</b> &middot; NPV <b id="vnpv">+€117k</b></div>
     </div>
   </header>
 
@@ -133,8 +133,8 @@
     <div class="panel">
       <div class="grp">
         <h2>Building &amp; energy</h2>
-        <div class="ctrl">
-          <div class="top"><label>Floor area</label><span class="unit">m²</span></div>
+        <div class="ctrl hl">
+          <div class="top"><label>Floor area</label><span class="unit">m² &middot; x-axis</span></div>
           <div class="row"><input type="range" id="A_r" min="250" max="50000" step="50" value="5000"><input type="number" id="A_n" min="0" step="50" value="5000"></div>
         </div>
         <div class="ctrl">
@@ -146,8 +146,20 @@
           <div class="row"><input type="range" id="P_r" min="0.05" max="0.50" step="0.01" value="0.22"><input type="number" id="P_n" min="0" step="0.01" value="0.22"></div>
         </div>
         <div class="ctrl">
-          <div class="top"><label>Promised savings</label><span class="unit">% of energy</span></div>
-          <div class="row"><input type="range" id="S_r" min="0" max="40" step="0.5" value="15"><input type="number" id="S_n" min="0" step="0.5" value="15"></div>
+          <div class="top"><label>Energy savings</label><span class="unit">% of bill</span></div>
+          <div class="row"><input type="range" id="SE_r" min="0" max="40" step="0.5" value="15"><input type="number" id="SE_n" min="0" step="0.5" value="15"></div>
+        </div>
+      </div>
+
+      <div class="grp">
+        <h2>Maintenance</h2>
+        <div class="ctrl">
+          <div class="top"><label>Maintenance cost</label><span class="unit">€/m²·yr</span></div>
+          <div class="row"><input type="range" id="M_r" min="0" max="60" step="1" value="22"><input type="number" id="M_n" min="0" step="1" value="22"></div>
+        </div>
+        <div class="ctrl">
+          <div class="top"><label>Maintenance savings</label><span class="unit">% of budget</span></div>
+          <div class="row"><input type="range" id="SM_r" min="0" max="30" step="0.5" value="12"><input type="number" id="SM_n" min="0" step="0.5" value="12"></div>
         </div>
       </div>
 
@@ -192,14 +204,18 @@
     <div class="viz">
       <div class="mapcard">
         <div class="maphd">
-          <h2>Break-even map: building size &times; promised savings</h2>
-          <span class="hint">click the map to move the operating point</span>
+          <h2>Break-even map: building size &times; value created</h2>
+          <span class="hint">hover for detail &middot; click to set area</span>
         </div>
-        <div class="canvas-host"><canvas id="map" width="760" height="440"></canvas></div>
+        <p class="subttl">current point <b id="yLbl">€7.6/m²·yr</b> = <span class="en" id="enLbl">€5.0 energy</span> + <span class="mn" id="mnLbl">€2.6 maintenance</span></p>
+        <div class="chartwrap">
+          <div class="canvas-host"><canvas id="map" width="760" height="500"></canvas><div class="tip" id="tip"></div></div>
+        </div>
         <div class="legend">
           <span><i class="sw go"></i> pays back within target</span>
           <span><i class="sw no"></i> too slow / never</span>
-          <span><i class="sw line"></i> break-even line (payback = target)</span>
+          <span><i class="sw line"></i> break-even line</span>
+          <span><i class="sw dot2"></i> large-building floor</span>
           <span><i class="sw dot"></i> current building</span>
         </div>
       </div>
@@ -207,12 +223,12 @@
       <div class="rdgroup">
         <div class="rdhead"><i class="tick"></i> Building owner <span class="side">cost &amp; return</span></div>
         <div class="readout">
-          <div class="cell"><div class="k">Annual energy bill</div><div class="v" id="rBill">€165k</div></div>
-          <div class="cell"><div class="k">Gross savings/yr</div><div class="v" id="rGross">€24.8k</div></div>
+          <div class="cell"><div class="k">Energy savings/yr</div><div class="v" id="rEnSav">€24.8k</div></div>
+          <div class="cell"><div class="k">Maint. savings/yr</div><div class="v" id="rMnSav">€13.2k</div></div>
           <div class="cell"><div class="k">Twin OpEx/yr</div><div class="v" id="rOpex">€12.5k</div></div>
-          <div class="cell"><div class="k">Net benefit/yr</div><div class="v" id="rNet">€12.3k</div></div>
+          <div class="cell"><div class="k">Net benefit/yr</div><div class="v" id="rNet">€25.5k</div></div>
           <div class="cell"><div class="k">Up-front CapEx</div><div class="v" id="rCapex">€70k</div></div>
-          <div class="cell hi"><div class="k">Simple payback</div><div class="v" id="rPay">5.7<small> yr</small></div></div>
+          <div class="cell hi"><div class="k">Simple payback</div><div class="v" id="rPay">2.8<small> yr</small></div></div>
         </div>
       </div>
 
@@ -222,228 +238,174 @@
           <div class="cell acc"><div class="k">Up-front revenue</div><div class="v" id="pUp">€70k</div></div>
           <div class="cell acc"><div class="k">Recurring/yr (ARR)</div><div class="v" id="pArr">€12.5k</div></div>
           <div class="cell acc"><div class="k">Lifetime revenue</div><div class="v" id="pLife">€195k<small> /10yr</small></div></div>
-          <div class="cell acc hi"><div class="k">Share of savings</div><div class="v" id="pShare">61%</div></div>
+          <div class="cell acc hi"><div class="k">Share of value</div><div class="v" id="pShare">51%</div></div>
         </div>
       </div>
 
       <div class="answer">
         <h2>So, for this twin, what makes it work?</h2>
-        <div class="line"><span class="q">Minimum savings needed at this building size</span><span class="a" id="aSneed">14.8%</span></div>
-        <div class="line"><span class="q">Smallest building that pays back at this savings</span><span class="a" id="aAneed">4,750 m²</span></div>
-        <div class="line"><span class="q">Savings floor below which no building size ever pays back (per-area costs alone)</span><span class="a" id="aFloor">5.7%</span></div>
-        <div class="line"><span class="q">NPV over horizon</span><span class="a" id="aNpv">+€21k</span></div>
+        <div class="line"><span class="q">Value the twin must create at this size to break even</span><span class="a" id="aYneed">€5.3/m²·yr</span></div>
+        <div class="line"><span class="q">Smallest building that pays back at this value</span><span class="a" id="aAneed">2,450 m²</span></div>
+        <div class="line"><span class="q">Value floor, large-building limit (per-area costs alone)</span><span class="a" id="aFloor">€3.1/m²·yr</span></div>
+        <div class="line"><span class="q">NPV over horizon</span><span class="a" id="aNpv">+€117k</span></div>
       </div>
     </div>
   </div>
 
   <div class="notes">
-    <b>Model.</b> bill = area &times; EUI &times; price. gross savings = bill &times; savings%. net = gross &minus; OpEx. CapEx = fixed + per&middot;area. OpEx = fixed + per&middot;area. payback = CapEx / net. NPV = &minus;CapEx + net &times; (1 &minus; (1+r)^&minus;T) / r. Savings, CapEx and OpEx are kept as free inputs on purpose: published twin costs run from tens of thousands to several million euros depending on scope, so a single headline number is meaningless and the honest move is to map the break-even surface.<br><br>
-    <b>Default anchors.</b> Office EUI 100 to 200 kWh/m²·yr (final energy), typical European stock. Non-household electricity in Italy around 0.20 to 0.25 €/kWh incl. taxes (Eurostat, H2 2025; EU average 0.184 €/kWh). Whole-building savings from calibrated-model retrofits in the field roughly 11 to 35%. Twin cost split fixed vs per-area is illustrative, set it to your own quotes.<br><br>
-    <b>Sources.</b> <a href="https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20260508-2" target="_blank" rel="noopener">Eurostat non-household electricity prices, H2 2025</a> &middot; <a href="https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Electricity_price_statistics" target="_blank" rel="noopener">Eurostat electricity price statistics</a>
+    <b>Model.</b> Value created per area = EUI &times; price &times; energy% + maintenance cost &times; maintenance% [€/m²·yr]. net = area &times; value created &minus; OpEx. CapEx = fixed + per&middot;area. OpEx = fixed + per&middot;area. payback = CapEx / net. NPV = &minus;CapEx + net &times; (1 &minus; (1+r)^&minus;T) / r. The y-axis sums the two savings streams in euros, the only honest way to add a percentage of the energy bill to a percentage of the maintenance budget. The break-even line is the value the twin must create at each building size; it bends because fixed costs amortise over area, flattening to a floor set by the per-area costs. Savings and costs are free inputs on purpose: published twin costs span tens of thousands to several million euros, so the honest move is to map the surface rather than quote a number.<br><br>
+    <b>Default anchors.</b> Office EUI 100 to 200 kWh/m²·yr (final energy). Non-household electricity in Italy ~0.20 to 0.25 €/kWh incl. taxes (Eurostat H2 2025; EU avg 0.184). Office maintenance budget ~20 to 25 €/m²·yr, repairs and preventive only, excluding utilities and cleaning (IFMA, BOMA, BSRIA). Realized energy savings from operational optimization roughly 10 to 30%; twin-driven maintenance cost reductions roughly 10 to 18%. Higher figures in vendor and simulation literature are best-case.<br><br>
+    <b>Sources.</b> <a href="https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Electricity_price_statistics" target="_blank" rel="noopener">Eurostat electricity prices</a> &middot; <a href="https://www.pfmonthenet.net/article/42806/Benchmarking-maintenance.aspx" target="_blank" rel="noopener">BSRIA O&amp;M maintenance benchmarks</a> &middot; <a href="https://doi.org/10.6028/NIST.AMS.100-61" target="_blank" rel="noopener">NIST AMS 100-61, Economics of Digital Twins</a>
   </div>
 </div>
 
 <script>
 (function(){
   "use strict";
-  var ids=["A","E","P","S","CF","CV","OF","OV","T","H","R"];
+  var ids=["A","E","P","SE","M","SM","CF","CV","OF","OV","T","H","R"];
   var rng={}, num={};
   ids.forEach(function(k){ rng[k]=document.getElementById(k+"_r"); num[k]=document.getElementById(k+"_n"); });
 
-  var cv=document.getElementById("map");
-  var ctx=cv.getContext("2d");
-
-  // map domain
-  var Amin=250, Amax=40000, Smin=0, Smax=40; // x area, y savings %
-  // plot insets (in css px space of the 760x440 backing)
-  var W=760, H=440;
-  var padL=58, padR=14, padT=14, padB=42;
+  var cv=document.getElementById("map"), ctx=cv.getContext("2d");
+  var W=760, H=500;
+  var padL=64, padR=18, padT=16, padB=50;
   var pw=W-padL-padR, ph=H-padT-padB;
+  var Amin=250, Amax=40000;
+  var curP=null, curYMax=10;
 
   function val(k){ return parseFloat(num[k].value)||0; }
-
   function capex(A,p){ return p.CF + p.CV*A; }
   function opex(A,p){ return p.OF + p.OV*A; }
-  function netBenefit(A,s,p){ // s as fraction
-    var gross=A*p.E*p.P*s;
-    return gross - opex(A,p);
-  }
-  function payback(A,s,p){
-    var net=netBenefit(A,s,p);
-    if(net<=0) return Infinity;
-    return capex(A,p)/net;
-  }
-  function npv(A,s,p){
-    var net=netBenefit(A,s,p);
-    var r=p.R/100, T=p.H;
-    var af = (r<=1e-9)? T : (1-Math.pow(1+r,-T))/r;
-    return -capex(A,p) + net*af;
-  }
+  function valueDensity(p){ return p.E*p.P*(val("SE")/100) + p.M*(val("SM")/100); } // €/m2/yr
 
   function fmtEur(x){
-    var sign=x<0?"-":"";
-    var a=Math.abs(x);
+    var sign=x<0?"-":""; var a=Math.abs(x);
     if(a>=1e6) return sign+"€"+(a/1e6).toFixed(a/1e6>=10?0:1)+"M";
     if(a>=1e3) return sign+"€"+(a/1e3).toFixed(a/1e3>=100?0:1)+"k";
     return sign+"€"+Math.round(a);
   }
   function fmtEurSigned(x){ return (x>=0?"+":"")+fmtEur(x); }
-  function fmtArea(A){
-    if(A>=1000) return (A/1000).toFixed(A/1000>=10?0:1)+"k m²";
-    return Math.round(A)+" m²";
-  }
+  function fmtArea(A){ return A>=1000?(A/1000).toFixed(A/1000>=10?0:1)+"k m²":Math.round(A)+" m²"; }
+  function fmtDen(x){ return "€"+x.toFixed(1)+"/m²·yr"; }
 
   function readParams(){
-    return {E:val("E"),P:val("P"),CF:val("CF"),CV:val("CV"),OF:val("OF"),OV:val("OV"),T:val("T"),H:val("H"),R:val("R")};
+    return {E:val("E"),P:val("P"),M:val("M"),CF:val("CF"),CV:val("CV"),
+            OF:val("OF"),OV:val("OV"),T:val("T"),H:val("H"),R:val("R")};
   }
 
-  function px2A(px){ return Amin + (px/pw)*(Amax-Amin); }
-  function s2py(spct){ return ph - (spct-Smin)/(Smax-Smin)*ph; }
   function A2px(A){ return (A-Amin)/(Amax-Amin)*pw; }
+  function px2A(px){ return Amin+(px/pw)*(Amax-Amin); }
 
-  function drawMap(p){
-    // backing pixel render of viability field via ImageData over plot rect
-    var img=ctx.createImageData(pw, ph);
-    var d=img.data;
-    var target=val("T");
+  // dynamic y-axis ceiling chosen from a ladder so the point stays visible without jitter
+  function pickYMax(p){
+    var need=Math.max(valueDensity(p)*1.3, (p.CV/p.T+p.OV)*1.6, 6);
+    var ladder=[6,8,10,12,15,20,25,30,40,50,60,80,100,140,200];
+    for(var i=0;i<ladder.length;i++){ if(ladder[i]>=need) return ladder[i]; }
+    return ladder[ladder.length-1];
+  }
+
+  function drawMap(p,yMax){
+    var target=p.T;
+    function y2py(y){ return ph - (y/yMax)*ph; }
+
+    var img=ctx.createImageData(pw, ph), d=img.data;
     for(var yy=0; yy<ph; yy++){
-      var spct = Smin + (1 - yy/ph)*(Smax-Smin);
-      var s = spct/100;
+      var ydens=(1-yy/ph)*yMax;
       for(var xx=0; xx<pw; xx++){
-        var A = Amin + (xx/pw)*(Amax-Amin);
-        var net = netBenefit(A,s,p);
-        var i=(yy*pw+xx)*4;
-        var R,G,B;
-        if(net<=0){
-          R=18;G=22;B=29; // dead zone
-        } else {
-          var pb = capex(A,p)/net;
-          var ratio = pb/target; // <=1 viable
+        var A=Amin+(xx/pw)*(Amax-Amin);
+        var net=A*ydens - opex(A,p);
+        var i=(yy*pw+xx)*4, R,G,B;
+        if(net<=0){ R=18;G=22;B=29; }
+        else{
+          var pb=capex(A,p)/net, ratio=pb/target;
           if(ratio<=1){
-            // intensity: ratio 0 -> bright, ratio 1 -> faint
-            var t = 1 - ratio;            // 0..1
-            var aA = 0.18 + 0.55*t;       // alpha of yellow over dark base
-            var br=11,bg=15,bb=20;        // base dark
-            R=Math.round(br+(244-br)*aA);
-            G=Math.round(bg+(196-bg)*aA);
-            B=Math.round(bb+(48-bb)*aA);
+            var t=1-ratio, aA=0.18+0.55*t, br=11,bg=15,bb=20;
+            R=Math.round(br+(244-br)*aA); G=Math.round(bg+(196-bg)*aA); B=Math.round(bb+(48-bb)*aA);
           } else {
-            // positive but too slow: dark grey, slightly lighter for closer-to-target
-            var u=Math.max(0,1-(ratio-1)/3);
-            var base=24+10*u;
-            R=Math.round(base*0.8);G=Math.round(base);B=Math.round(base*1.15);
+            var u=Math.max(0,1-(ratio-1)/3), base=24+10*u;
+            R=Math.round(base*0.8); G=Math.round(base); B=Math.round(base*1.15);
           }
         }
         d[i]=R;d[i+1]=G;d[i+2]=B;d[i+3]=255;
       }
     }
-    // clear full canvas
     ctx.fillStyle="#0B0E13"; ctx.fillRect(0,0,W,H);
     ctx.putImageData(img, padL, padT);
+    ctx.strokeStyle="#28313D"; ctx.lineWidth=1; ctx.strokeRect(padL+0.5,padT+0.5,pw,ph);
 
-    // plot border
-    ctx.strokeStyle="#28313D"; ctx.lineWidth=1;
-    ctx.strokeRect(padL+0.5,padT+0.5,pw,ph);
-
-    // break-even line: s*(A) = (capex/target + opex)/(A*E*P), in %
-    ctx.beginPath();
-    var started=false;
-    for(var xpix=0; xpix<=pw; xpix++){
-      var A=px2A(xpix);
-      var denom=A*p.E*p.P;
-      if(denom<=0) continue;
-      var sStar=(capex(A,p)/target + opex(A,p))/denom; // fraction
-      var sPct=sStar*100;
-      var ypix=s2py(sPct);
-      var cx=padL+xpix, cy=padT+ypix;
-      if(sPct<Smin-5 || sPct>Smax+40){ started=false; continue; }
+    // break-even line: y*(A) = (capex/target + opex)/A
+    ctx.beginPath(); var started=false;
+    for(var xp=0; xp<=pw; xp++){
+      var A=px2A(xp); if(A<=0) continue;
+      var yStar=(capex(A,p)/target + opex(A,p))/A;
+      var cx=padL+xp, cy=padT+y2py(yStar);
+      if(yStar<0 || yStar>yMax*1.6){ started=false; continue; }
       if(!started){ ctx.moveTo(cx,cy); started=true; } else { ctx.lineTo(cx,cy); }
     }
-    ctx.strokeStyle="#F4C430"; ctx.lineWidth=2.2; ctx.stroke();
+    ctx.strokeStyle="#F4C430"; ctx.lineWidth=2.4; ctx.stroke();
 
-    // savings floor (horizontal asymptote): s_floor = (CV/target + OV)/(E*P)
-    var floor=(p.CV/target + p.OV)/(p.E*p.P)*100;
-    if(floor>Smin && floor<Smax){
-      var fy=padT+s2py(floor);
-      ctx.save();
-      ctx.setLineDash([5,5]);
+    // floor: per-area limit y -> CV/target + OV
+    var floor=p.CV/target + p.OV;
+    if(floor>0 && floor<yMax){
+      var fy=padT+y2py(floor);
+      ctx.save(); ctx.setLineDash([2,4]);
       ctx.strokeStyle="rgba(244,196,48,0.35)"; ctx.lineWidth=1;
-      ctx.beginPath(); ctx.moveTo(padL,fy); ctx.lineTo(padL+pw,fy); ctx.stroke();
-      ctx.restore();
-      ctx.fillStyle="rgba(244,196,48,0.6)"; ctx.font="10px 'JetBrains Mono',monospace";
-      ctx.fillText("savings floor", padL+pw-86, fy-5);
+      ctx.beginPath(); ctx.moveTo(padL,fy); ctx.lineTo(padL+pw,fy); ctx.stroke(); ctx.restore();
+      ctx.fillStyle="rgba(244,196,48,0.55)"; ctx.font="10px 'JetBrains Mono',monospace"; ctx.textAlign="left";
+      ctx.fillText("floor", padL+pw-40, fy-5);
     }
 
-    // axes ticks
-    ctx.fillStyle="#5C6877"; ctx.font="10px 'JetBrains Mono',monospace";
-    ctx.strokeStyle="#28313D";
-    // x ticks
-    var xticks=[0,10000,20000,30000,40000];
-    xticks.forEach(function(A){
-      if(A<Amin) A=Amin;
-      var cx=padL+A2px(A);
-      ctx.beginPath(); ctx.moveTo(cx,padT+ph); ctx.lineTo(cx,padT+ph+4); ctx.stroke();
-      var lab = A>=1000? (A/1000)+"k" : ""+A;
-      ctx.textAlign="center"; ctx.fillText(lab, cx, padT+ph+16);
-    });
+    // axes
+    ctx.fillStyle="#5C6877"; ctx.font="10px 'JetBrains Mono',monospace"; ctx.strokeStyle="#28313D";
+    var xt=[0,10000,20000,30000,40000];
     ctx.textAlign="center";
+    xt.forEach(function(A){ if(A<Amin)A=Amin; var cx=padL+A2px(A); ctx.beginPath(); ctx.moveTo(cx,padT+ph); ctx.lineTo(cx,padT+ph+4); ctx.stroke(); ctx.fillText(A>=1000?(A/1000)+"k":""+A,cx,padT+ph+16); });
     ctx.fillStyle="#8593A2";
-    ctx.fillText("building floor area  (m²)", padL+pw/2, H-6);
-    // y ticks
-    var yticks=[0,10,20,30,40];
+    ctx.fillText("building floor area  (m²)", padL+pw/2, H-10);
+
+    var step = yMax<=10?2 : yMax<=20?5 : yMax<=40?10 : yMax<=100?20:50;
     ctx.textAlign="right";
-    yticks.forEach(function(spct){
-      var cy=padT+s2py(spct);
+    for(var v=0; v<=yMax+0.001; v+=step){
+      var cy=padT+y2py(v);
       ctx.beginPath(); ctx.moveTo(padL-4,cy); ctx.lineTo(padL,cy); ctx.stroke();
-      ctx.fillStyle="#5C6877";
-      ctx.fillText(spct+"%", padL-8, cy+3);
-    });
-    // y axis title (rotated)
-    ctx.save();
-    ctx.translate(14, padT+ph/2); ctx.rotate(-Math.PI/2);
-    ctx.textAlign="center"; ctx.fillStyle="#8593A2";
-    ctx.fillText("promised savings", 0, 0);
-    ctx.restore();
+      ctx.fillStyle="#5C6877"; ctx.fillText("€"+v, padL-8, cy+3);
+    }
+    ctx.save(); ctx.translate(15, padT+ph/2); ctx.rotate(-Math.PI/2);
+    ctx.textAlign="center"; ctx.fillStyle="#F4C430"; ctx.fillText("value created  (€/m²·yr)", 0, 0); ctx.restore();
 
     // operating point
-    var A0=val("A"), s0pct=val("S");
+    var A0=val("A"), y0=valueDensity(p);
     var ox=padL+A2px(Math.min(Math.max(A0,Amin),Amax));
-    var oy=padT+s2py(Math.min(Math.max(s0pct,Smin),Smax));
+    var oy=padT+y2py(Math.min(Math.max(y0,0),yMax));
+    ctx.save(); ctx.setLineDash([3,4]); ctx.strokeStyle="rgba(255,255,255,0.55)"; ctx.lineWidth=1;
+    ctx.beginPath(); ctx.moveTo(ox,oy); ctx.lineTo(ox,padT+ph); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(ox,oy); ctx.lineTo(padL,oy); ctx.stroke(); ctx.restore();
 
-    // crosshair guides to both axes
-    ctx.save();
-    ctx.setLineDash([3,4]);
-    ctx.strokeStyle="rgba(255,255,255,0.55)"; ctx.lineWidth=1;
-    ctx.beginPath(); ctx.moveTo(ox,oy); ctx.lineTo(ox,padT+ph); ctx.stroke(); // down to x-axis
-    ctx.beginPath(); ctx.moveTo(ox,oy); ctx.lineTo(padL,oy); ctx.stroke();    // left to y-axis
-    ctx.restore();
-
-    // value chips at the axis intersections
     function chip(cx,cy,txt,anchor){
       ctx.font="11px 'JetBrains Mono',monospace";
-      var tw=ctx.measureText(txt).width;
-      var padX=6, padYc=4, bw=tw+padX*2, bh=16;
-      var rx = anchor==="bottom" ? cx-bw/2 : (anchor==="left" ? padL-bw-3 : cx);
-      var ry = anchor==="bottom" ? cy+5 : cy-bh/2;
+      var tw=ctx.measureText(txt).width, padX=6, bw=tw+padX*2, bh=16;
+      var rx=anchor==="bottom"?cx-bw/2:padL-bw-3, ry=anchor==="bottom"?cy+5:cy-bh/2;
       ctx.fillStyle="#F4C430";
-      if(ctx.roundRect){ ctx.beginPath(); ctx.roundRect(rx,ry,bw,bh,3); ctx.fill(); }
-      else { ctx.fillRect(rx,ry,bw,bh); }
+      if(ctx.roundRect){ ctx.beginPath(); ctx.roundRect(rx,ry,bw,bh,3); ctx.fill(); } else { ctx.fillRect(rx,ry,bw,bh); }
       ctx.fillStyle="#0B0E13"; ctx.textAlign="left"; ctx.textBaseline="middle";
-      ctx.fillText(txt, rx+padX, ry+bh/2+0.5);
-      ctx.textBaseline="alphabetic";
+      ctx.fillText(txt,rx+padX,ry+bh/2+0.5); ctx.textBaseline="alphabetic";
     }
-    var areaTxt = A0>=1000 ? (A0/1000).toFixed(A0%1000===0?0:1)+"k m²" : Math.round(A0)+" m²";
-    chip(ox, padT+ph, areaTxt, "bottom");
-    chip(padL, oy, (s0pct%1===0?s0pct.toFixed(0):s0pct.toFixed(1))+"%", "left");
+    chip(ox, padT+ph, fmtArea(A0), "bottom");
+    chip(padL, oy, "€"+y0.toFixed(1), "left");
 
-    // marker on top
-    ctx.beginPath(); ctx.arc(ox,oy,6,0,Math.PI*2);
-    ctx.strokeStyle="#ffffff"; ctx.lineWidth=2; ctx.stroke();
-    ctx.beginPath(); ctx.arc(ox,oy,2,0,Math.PI*2);
-    ctx.fillStyle="#ffffff"; ctx.fill();
+    ctx.beginPath(); ctx.arc(ox,oy,6,0,Math.PI*2); ctx.strokeStyle="#fff"; ctx.lineWidth=2; ctx.stroke();
+    ctx.beginPath(); ctx.arc(ox,oy,2,0,Math.PI*2); ctx.fillStyle="#fff"; ctx.fill();
 
-    // out-of-range indicator
-    if(A0>Amax || s0pct>Smax){
+    // percentage mix label at the operating point
+    var seP=val("SE"), smP=val("SM");
+    var mixTxt=(seP%1===0?seP:seP.toFixed(1))+"% en · "+(smP%1===0?smP:smP.toFixed(1))+"% mn";
+    ctx.font="10px 'JetBrains Mono',monospace"; ctx.fillStyle="#ffffff"; ctx.textAlign="left";
+    var lx=ox+11, ly= oy<padT+22 ? oy+16 : oy-9;
+    var ltw=ctx.measureText(mixTxt).width;
+    if(lx+ltw>padL+pw-4){ lx=ox-11-ltw; }
+    ctx.fillText(mixTxt, lx, ly);
+
+    if(A0>Amax || y0>yMax){
       ctx.fillStyle="#8593A2"; ctx.font="10px 'JetBrains Mono',monospace"; ctx.textAlign="right";
       ctx.fillText("point off-scale", padL+pw-6, padT+14);
     }
@@ -451,108 +413,104 @@
 
   function update(){
     var p=readParams();
-    var A=val("A"), s=val("S")/100, target=val("T");
+    var A=val("A"), se=val("SE")/100, sm=val("SM")/100, target=val("T");
+    var enSav=A*p.E*p.P*se, mnSav=A*p.M*sm, gross=enSav+mnSav;
+    var op=opex(A,p), cap=capex(A,p), net=gross-op;
+    var pb= net>0 ? cap/net : Infinity;
+    var r=p.R/100, af=(r<=1e-9)?p.H:(1-Math.pow(1+r,-p.H))/r;
+    var nv=-cap+net*af;
 
-    var bill=A*p.E*p.P;
-    var gross=bill*s;
-    var op=opex(A,p);
-    var net=gross-op;
-    var cap=capex(A,p);
-    var pb=payback(A,s,p);
-    var nv=npv(A,s,p);
-
-    document.getElementById("rBill").textContent=fmtEur(bill);
-    document.getElementById("rGross").textContent=fmtEur(gross);
+    document.getElementById("rEnSav").textContent=fmtEur(enSav);
+    document.getElementById("rMnSav").textContent=fmtEur(mnSav);
     document.getElementById("rOpex").textContent=fmtEur(op);
     document.getElementById("rNet").textContent=fmtEur(net);
     document.getElementById("rCapex").textContent=fmtEur(cap);
-    document.getElementById("rPay").innerHTML = (net<=0? "&infin;" : pb.toFixed(1))+"<small> yr</small>";
+    document.getElementById("rPay").innerHTML=(net<=0?"&infin;":pb.toFixed(1))+"<small> yr</small>";
 
-    // provider perspective: CapEx is up-front revenue, OpEx is recurring
-    var lifeRev = cap + op*p.H;            // contract value over horizon (undiscounted)
-    var poolValue = gross*p.H;             // total energy value created over horizon
+    var lifeRev=cap+op*p.H, pool=gross*p.H;
     document.getElementById("pUp").textContent=fmtEur(cap);
     document.getElementById("pArr").textContent=fmtEur(op);
     document.getElementById("pLife").innerHTML=fmtEur(lifeRev)+"<small> /"+p.H+"yr</small>";
     var shareEl=document.getElementById("pShare");
-    if(poolValue>0){
-      var share=lifeRev/poolValue*100;
-      shareEl.textContent=share.toFixed(0)+"%";
-      // >100% means the provider bills more than the energy it saves: owner loses
-      shareEl.parentElement.classList.toggle("bad", share>100);
-    } else {
-      shareEl.textContent="n/a";
-      shareEl.parentElement.classList.remove("bad");
-    }
+    if(pool>0){ var sh=lifeRev/pool*100; shareEl.textContent=sh.toFixed(0)+"%"; shareEl.parentElement.classList.toggle("bad",sh>100); }
+    else { shareEl.textContent="n/a"; shareEl.parentElement.classList.remove("bad"); }
 
-    // verdict
-    var chip=document.getElementById("chip");
-    var cls,txt;
+    var chip=document.getElementById("chip"); var cls,txt;
     if(net<=0){ cls="no"; txt="NOT VIABLE"; }
     else if(pb<=target && nv>0){ cls="go"; txt="VIABLE"; }
     else if(pb<=target*1.3){ cls="mid"; txt="MARGINAL"; }
     else { cls="no"; txt="NOT VIABLE"; }
     chip.className="chip "+cls; chip.textContent=txt;
-    document.getElementById("vpay").textContent = (net<=0?"never":pb.toFixed(1)+" yr");
-    document.getElementById("vnpv").textContent = fmtEurSigned(nv);
+    document.getElementById("vpay").textContent=(net<=0?"never":pb.toFixed(1)+" yr");
+    document.getElementById("vnpv").textContent=fmtEurSigned(nv);
 
-    // direct answers
-    var denom=A*p.E*p.P;
-    var sNeed = denom>0 ? (cap/target + op)/denom*100 : Infinity;
-    document.getElementById("aSneed").textContent = isFinite(sNeed)? sNeed.toFixed(1)+"%" : "n/a";
+    // subtitle decomposition
+    var yd=p.E*p.P*se + p.M*sm;
+    document.getElementById("yLbl").textContent=fmtDen(yd);
+    document.getElementById("enLbl").textContent="€"+(p.E*p.P*se).toFixed(1)+" energy";
+    document.getElementById("mnLbl").textContent="€"+(p.M*sm).toFixed(1)+" maintenance";
 
-    // smallest building at current savings: A* = (CF/target + OF) / (E*P*s - CV/target - OV)
-    var perAreaNet = p.E*p.P*s - p.CV/target - p.OV;
+    // answers (€/m2/yr)
+    var yNeed=A>0 ? (cap/target+op)/A : Infinity;
+    document.getElementById("aYneed").textContent=isFinite(yNeed)?fmtDen(yNeed):"n/a";
+    var floor=p.CV/target+p.OV;
     var aEl=document.getElementById("aAneed");
-    if(perAreaNet>0){
-      var Aneed=(p.CF/target + p.OF)/perAreaNet;
-      aEl.className="a"; aEl.textContent=fmtArea(Aneed);
-    } else {
-      aEl.className="a warn"; aEl.textContent="no size works here";
-    }
-
-    var floor=(p.CV/target + p.OV)/(p.E*p.P)*100;
-    document.getElementById("aFloor").textContent=floor.toFixed(1)+"%";
-
+    if(yd>floor){ aEl.className="a"; aEl.textContent=fmtArea((p.CF/target+p.OF)/(yd-floor)); }
+    else { aEl.className="a warn"; aEl.textContent="no size works here"; }
+    document.getElementById("aFloor").textContent=fmtDen(floor);
     document.getElementById("aNpv").textContent=fmtEurSigned(nv);
 
-    drawMap(p);
+    var yMax=pickYMax(p); curP=p; curYMax=yMax;
+    drawMap(p,yMax);
   }
 
-  // wire sliders <-> numbers
   ids.forEach(function(k){
     rng[k].addEventListener("input",function(){ num[k].value=rng[k].value; update(); });
     num[k].addEventListener("input",function(){
       var v=parseFloat(num[k].value);
-      if(!isNaN(v)){
-        if(v>=parseFloat(rng[k].min) && v<=parseFloat(rng[k].max)) rng[k].value=v;
-      }
+      if(!isNaN(v) && v>=parseFloat(rng[k].min) && v<=parseFloat(rng[k].max)) rng[k].value=v;
       update();
     });
   });
 
-  // click on map to set A and S
+  // click sets the building area (x). Savings come from the two sliders.
   cv.addEventListener("click",function(ev){
     var rect=cv.getBoundingClientRect();
-    var scaleX=W/rect.width, scaleY=H/rect.height;
-    var mx=(ev.clientX-rect.left)*scaleX - padL;
-    var my=(ev.clientY-rect.top)*scaleY - padT;
+    var mx=(ev.clientX-rect.left)*(W/rect.width)-padL;
+    var my=(ev.clientY-rect.top)*(H/rect.height)-padT;
     if(mx<0||mx>pw||my<0||my>ph) return;
-    var A=Amin+(mx/pw)*(Amax-Amin);
-    var spct=Smin+(1-my/ph)*(Smax-Smin);
-    A=Math.round(A/50)*50;
-    spct=Math.round(spct*2)/2;
+    var A=Math.round(px2A(mx)/50)*50;
     num["A"].value=A; rng["A"].value=Math.min(A,parseFloat(rng["A"].max));
-    num["S"].value=spct; rng["S"].value=spct;
     update();
   });
 
-  // high-dpi crispness
-  function fitDPI(){
+  // hover tooltip: translate the euro value under the cursor into the two pure-play percentages
+  var tip=document.getElementById("tip");
+  cv.addEventListener("mousemove",function(ev){
     var rect=cv.getBoundingClientRect();
-    var dpr=window.devicePixelRatio||1;
-    // keep internal resolution fixed at W,H for ImageData math; just rely on css scaling
-  }
+    var cssx=ev.clientX-rect.left, cssy=ev.clientY-rect.top;
+    var mx=cssx*(W/rect.width)-padL, my=cssy*(H/rect.height)-padT;
+    if(mx<0||mx>pw||my<0||my>ph||!curP){ tip.style.display="none"; return; }
+    var p=curP, A=px2A(mx), y=(1-my/ph)*curYMax;
+    var net=A*y - opex(A,p);
+    var pb = net>0 ? capex(A,p)/net : Infinity;
+    var enq = (p.E*p.P)>0 ? y/(p.E*p.P)*100 : 0;
+    var mnq = p.M>0 ? y/p.M*100 : 0;
+    var col = (net<=0)?"#C76A6A":(pb<=p.T?"#F4C430":(pb<=p.T*1.3?"#cdb86a":"#C76A6A"));
+    tip.innerHTML =
+      '<span class="tk">area</span> '+fmtArea(A)+'<br>'+
+      '<span class="tk">value</span> '+fmtDen(y)+'<br>'+
+      '<span class="tk">≡</span> <span class="pct">'+enq.toFixed(1)+'%</span> energy <span class="tk">or</span> <span class="pct">'+mnq.toFixed(1)+'%</span> maint.<br>'+
+      '<span class="vd" style="background:'+col+'"></span><span class="tk">payback</span> '+(net<=0?"never":pb.toFixed(1)+" yr");
+    tip.style.display="block";
+    var tw=tip.offsetWidth, th=tip.offsetHeight, hostW=rect.width, hostH=rect.height;
+    var tx=cssx+14, ty=cssy+14;
+    if(tx+tw>hostW) tx=cssx-tw-14;
+    if(ty+th>hostH) ty=cssy-th-14;
+    tip.style.left=Math.max(0,tx)+"px"; tip.style.top=Math.max(0,ty)+"px";
+  });
+  cv.addEventListener("mouseleave",function(){ tip.style.display="none"; });
+
   update();
 })();
 </script>
